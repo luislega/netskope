@@ -39,6 +39,7 @@ $films = [];
 if ($filmsResult->num_rows > 0) {
   while($row = $filmsResult->fetch_assoc()) {
     $row['comments'] = $comments['film_id_'.$row['id']];
+    $row['ww_gross'] = floatval(str_replace('$', '', $row['ww_gross']));
     $films[] = $row;
   }
 }

@@ -1,8 +1,8 @@
 <?php
 
-$mysql_host = getenv('MYSQL_DBHOST') ? getenv('MYSQL_DBHOST') : '127.0.0.1';
+$mysql_host = '127.0.0.1';
 $mysql_user = 'root';
-$mysql_pw   = getenv('MYSQL_DBPASS') ? getenv('MYSQL_DBPASS') : 'Webuslega1';
+$mysql_pw   = 'Webuslega1';
 $mysql_db   = 'mini_imdb';
 $mysql_port = '3306';
 $mysql_ca_cert = null;

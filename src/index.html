@@ -25,7 +25,7 @@
         Sort films by :
         <select ng-model="sortBy" name="orderBy" id="">
           <option value="title">Title</option>
-          <option value="studio">Studio</option>
+          <option value="lead_studio">Studio</option>
           <option value="audience_score">User Rating</option>
           <option value="profitability">Profitability</option>
           <option value="rotten_tomatoes_score">Rotten Tomatoes Rating</option>
@@ -62,7 +62,7 @@
                 <span class="film-detail">Rotten Tomatoes Rating:</span> {{film.rotten_tomatoes_score}}%
               </li>
               <li>
-                <span class="film-detail">Worldwide Gross:</span> {{film.ww_gross}}
+                <span class="film-detail">Worldwide Gross:</span> {{film.ww_gross | currency}}
               </li>
               <li>
                 <span class="film-detail">Release Year:</span> {{film.year}}

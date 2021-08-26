@@ -27,11 +27,11 @@ class LazyMysqli
 
   public function __construct($host, $user, $pw, $db, $port, $ca_cert = NULL)
   {
-    $this->host = $host;
-    $this->user = $user;
-    $this->pw = $pw;
-    $this->db = $db;
-    $this->port = $port;
+    $this->host = $host ?? getenv('MYSQL_DBHOST');
+    $this->user = $user ?? getenv('MYSQL_DB_USER');
+    $this->pw = $pw ?? getenv('MYSQL_DBPASS');
+    $this->db = $db ?? getenv('MYSQL_DBNAME');
+    $this->port = $port ?? getenv('MYSQL_DBPORT');
     $this->ca_cert = $ca_cert;
   }
 
@@ -112,11 +112,11 @@ class LazyMysqli
 
 
 $mysqli = new LazyMysqli(
-  $mysql_host ?? getenv('MYSQL_DBHOST'),
-  $mysql_user ?? getenv('MYSQL_DBUSER'),
-  $mysql_pw ?? getenv('MYSQL_DBPASS'),
-  $mysql_db ?? getenv('MYSQL_DBNAME'),
-  $mysql_port ?? getenv('MYSQL_DBPORT'),
+  $mysql_host,
+  $mysql_user,
+  $mysql_pw,
+  $mysql_db,
+  $mysql_port,
   $mysql_ca_cert);
 $mysqli_readonly = new LazyMysqli($mysql_host_readonly,
   $mysql_user_readonly,
