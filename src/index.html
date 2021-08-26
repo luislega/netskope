@@ -1,0 +1,111 @@
+<html ng-app="myApp">
+<head>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/mini-imdb.css"/>
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,300,700" rel="stylesheet" type="text/css">
+</head>
+<body ng-controller="filmsController">
+  <div class="row header">
+    <div class="container">
+      <h1>Mini IMDB</h1>
+    </div>
+  </div>
+	<div class="row">
+    <div class="container">
+      <div class="title filter">
+        <h2>Movies</h2>
+        <input
+          ng-model="searchString"
+          class="search-box"
+          type="text"
+          placeholder="Search Movie"
+        />
+        <br />
+        <br />
+        Sort films by :
+        <select ng-model="sortBy" name="orderBy" id="">
+          <option value="title">Title</option>
+          <option value="studio">Studio</option>
+          <option value="audience_score">User Rating</option>
+          <option value="profitability">Profitability</option>
+          <option value="rotten_tomatoes_score">Rotten Tomatoes Rating</option>
+          <option value="ww_gross">Worldwide Gross</option>
+          <option value="year">Release Year</option>
+        </select>
+        <select ng-model="reverseSort" name="reverseSort" id="">
+          <option value="false">Ascending</option>
+          <option value="true">Descending</option>
+        </select>
+      </div>
+      <div class="films">
+        <div
+          class="film"
+          ng-repeat="film in films | orderBy:sortBy:reverseSort | filter:searchString"
+        >
+          <div class="film-on-list" ng-click="showDetails(film.id);">{{film.title}}</div>
+          <div ng-class="{hide: film.id !== openFilm}" class="film-details" id="film-details-{{film.id}}">
+            <h3>{{film.title}}</h3>
+            <ul>
+              <li>
+                <spa class="film-detail"n>Genre:</spa> {{film.genre}}
+              </li>
+              <li>
+                <span class="film-detail">Studio:</span> {{film.lead_studio}}
+              </li>
+              <li>
+                <span class="film-detail">User Rating:</span> {{film.audience_score}}%
+              </li>
+              <li>
+                <span class="film-detail">Profitability:</span> {{film.profitability | number:1}}%
+              </li>
+              <li>
+                <span class="film-detail">Rotten Tomatoes Rating:</span> {{film.rotten_tomatoes_score}}%
+              </li>
+              <li>
+                <span class="film-detail">Worldwide Gross:</span> {{film.ww_gross}}
+              </li>
+              <li>
+                <span class="film-detail">Release Year:</span> {{film.year}}
+              </li>
+            </ul>
+            <div
+              class="film-comments"
+              id="film-comments-{{film.id}}"
+            >
+              <h4>Comments</h4>
+              <div class="comment" ng-repeat="comment in film.comments">
+                <span class="commenter-name">
+                  {{comment.comment.commenter}}:
+                </span>
+                {{comment.comment.comment}}
+              </div>
+              <form>
+                <input
+                  name="comment"
+                  ng-model="commentInput"
+                  type="text"
+                  placeholder="Your comment"
+                />
+                <input
+                  name="comment"
+                  ng-model="nameInput" 
+                  type="text"
+                  placeholder="Your name"
+                />
+                <button 
+                  ng-click="addComment(film.id, nameInput, commentInput)" 
+                  type="submit"
+                  ng-disabled="openFilm === film.id">
+                  Add Comment
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="app/app.js"></script>
+</body>
+</html>

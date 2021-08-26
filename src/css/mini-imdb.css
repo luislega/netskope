@@ -1,0 +1,92 @@
+div.header {
+  border-bottom: 1px solid black;
+}
+
+div.film-on-list {
+  cursor: pointer;
+}
+
+input,
+button {
+  width: 200px;
+}
+
+input[type=text] {
+  color: black;
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  padding: 5px 15px;
+  border-bottom: 1px solid black;
+}
+
+input[type=text]::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+div.title {
+  margin: 20px 0;
+}
+
+span.commenter-name {
+  font-style: italic;
+  color: white;
+  font-weight: bold;
+}
+
+h3 {
+  margin: 0;
+  text-decoration: underline;
+}
+
+h3 + ul {
+  margin-top: 15px;
+}
+
+h4 {
+  text-decoration: underline;
+}
+
+div.comment {
+  padding-left: 15px;
+}
+
+div.comment + div.comment {
+  margin-top: 5px;
+}
+
+.film-details {
+  margin-top: 20px;
+  background-color: lightsteelblue;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.film + .film {
+  margin-top: 20px;
+}
+
+form > input[type=text]:first-child {
+  margin-top: 20px;
+}
+
+form > input[type=text] {
+  margin-top: 10px;
+  display: block;
+}
+
+button {
+  border: none;
+  margin-top: 10px;
+  background: black;
+  color: white;
+  padding: 5px 15px;
+}
+
+button:hover {
+  background: white;
+  color: black;
+}
+
+.hide {
+  visibility: hidden;
+}
