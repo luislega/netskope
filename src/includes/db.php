@@ -1,5 +1,6 @@
 <?php
-require_once('../credentials/database.php');
+if(!getenv('MYSQL_DBHOST'))
+  require_once('../../credentials/database.php');
 
 global $mysql_host,
        $mysql_user,
@@ -110,11 +111,12 @@ class LazyMysqli
 }
 
 
-$mysqli = new LazyMysqli($mysql_host,
-  $mysql_user,
-  $mysql_pw,
-  $mysql_db,
-  $mysql_port,
+$mysqli = new LazyMysqli(
+  $mysql_host ?? getenv('MYSQL_DBHOST'),
+  $mysql_user ?? getenv('MYSQL_DBUSER'),
+  $mysql_pw ?? getenv('MYSQL_DBPASS'),
+  $mysql_db ?? getenv('MYSQL_DBNAME'),
+  $mysql_port ?? getenv('MYSQL_DBPORT'),
   $mysql_ca_cert);
 $mysqli_readonly = new LazyMysqli($mysql_host_readonly,
   $mysql_user_readonly,

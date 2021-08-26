@@ -20,10 +20,8 @@ if ($commentsResult->num_rows > 0) {
       $comments['film_id_'.$row['film_id']] = [];
     
     $comments['film_id_'.$row['film_id']][] = [
-      'comment' => [
-        'commenter' => $row['commenter_name'],
-        'comment' => $row['comment'],
-      ]
+      'commenter' => $row['commenter_name'],
+      'comment' => $row['comment'],
     ];
   }
 }
