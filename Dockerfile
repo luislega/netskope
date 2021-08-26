@@ -3,9 +3,10 @@ FROM php:7.3-apache
 #Install git and MySQL extendions for PHP
 
 RUN apt-get update && apt-get install -y git
+RUN apt-get install -y vim-tiny
 RUN docker-php-ext-install pdo pdo_mysql mysqli
 RUN a2enmod rewrite
 
-COPY src /var/www/html/
+COPY . /var/www/html/netskope
 EXPOSE 80/tcp
 EXPOSE 443/tcp
