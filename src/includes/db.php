@@ -28,7 +28,7 @@ class LazyMysqli
   public function __construct($host, $user, $pw, $db, $port, $ca_cert = NULL)
   {
     $this->host = $host ?? getenv('MYSQL_DBHOST');
-    $this->user = $user ?? getenv('MYSQL_DB_USER');
+    $this->user = $user ?? getenv('MYSQL_DBUSER');
     $this->pw = $pw ?? getenv('MYSQL_DBPASS');
     $this->db = $db ?? getenv('MYSQL_DBNAME');
     $this->port = $port ?? getenv('MYSQL_DBPORT');
