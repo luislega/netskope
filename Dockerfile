@@ -8,6 +8,7 @@ RUN docker-php-ext-install pdo pdo_mysql mysqli
 RUN a2enmod rewrite
 
 COPY . /var/www/html/netskope
+# ADD /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.bak
 COPY init/000-default.conf /etc/apache2/sites-available/
 EXPOSE 80/tcp
 EXPOSE 443/tcp

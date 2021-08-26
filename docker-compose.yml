@@ -6,6 +6,8 @@ volumes:
 services:
   mysql:
     image: mysql:8.0.0
+    ports:
+      - "4306:3306"
     container_name: mysql8
     environment:
       - MYSQL_ROOT_PASSWORD=secret
